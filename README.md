@@ -44,22 +44,20 @@ Technical Stack
 
 Project Structure
 -----------------
-
-Copy
-
-`com.recorddb/
-├── core/
-│   ├── DatabaseOperations.java
-│   └── NoSQLDatabase.java
-├── model/
-│   └── Document.java
-├── command/
-│   └── CommandExecutor.java
-├── util/
-│   ├── DocumentSerializer.java
-│   └── ValidationUtil.java
-└── server/
-    └── App.java`
+    
+    com.recorddb/
+    ├── core/
+    │   ├── DatabaseOperations.java
+    │   └── NoSQLDatabase.java
+    ├── model/
+    │   └── Document.java
+    ├── command/
+    │   └── CommandExecutor.java
+    ├── util/
+    │   ├── DocumentSerializer.java
+    │   └── ValidationUtil.java
+    └── server/
+        └── App.java
 
 Getting Started
 ---------------
@@ -73,36 +71,16 @@ Getting Started
 ### Installation
 
 1.  Clone the repository:
-
-bash
-
-Copy
-
-`git clone https://github.com/yourusername/nosql-record-db.git`
+   `git clone https://github.com/yourusername/nosql-record-db.git`
 
 1.  Navigate to project directory:
-
-bash
-
-Copy
-
-`cd nosql-record-db`
+    `cd nosql-record-db`
 
 1.  Build the project:
-
-bash
-
-Copy
-
-`gradle build`
+    `gradle build`
 
 1.  Run the application:
-
-bash
-
-Copy
-
-`gradle run`
+    `gradle run`
 
 Usage Guide
 -----------
@@ -111,48 +89,32 @@ Usage Guide
 
 Run the main application class:
 
-java
-
-Copy
-
-`public static void main(String[] args) {
-    DatabaseOperations database = new NoSQLDatabase();
-    CommandExecutor executor = new CommandExecutor(database);
-    // ... rest of the implementation
-}`
+    public static void main(String[] args) {
+        DatabaseOperations database = new NoSQLDatabase();
+        CommandExecutor executor = new CommandExecutor(database);
+        // ... rest of the implementation
+    }
 
 ### Basic Operations
 
 Insert a Single Document
 ------------------------
-
-Copy
-
-`INSERT_ONE { _id: 101, name: JohnDoe, age: 30, location: NY }`
+    INSERT_ONE { _id: 101, name: JohnDoe, age: 30, location: NY }
 
 Insert Multiple Documents
 -------------------------
-
-Copy
-
-`INSERT_MANY [
-    { _id: 201, book: 1984, author: George Orwell },
-    { _id: 202, book: Brave New World, author: Aldous Huxley }
-]`
+    INSERT_MANY [
+        { _id: 201, book: 1984, author: George Orwell },
+        { _id: 202, book: Brave New World, author: Aldous Huxley }
+    ]
 
 Find Documents
 --------------
-
-Copy
-
-`FIND { author: George Orwell }`
+    FIND { author: George Orwell }    
 
 Delete Documents
 ----------------
-
-Copy
-
-`DELETE { author: George Orwell }`
+    DELETE { author: George Orwell }
 
 Command Reference
 -----------------
@@ -161,41 +123,25 @@ Command Reference
 
 -   Format: `INSERT_ONE { _id: <value>, <key>: <value>, ... }`
 -   Returns: `SUCCESS` or `INVALID_COMMAND` or `ID_CONFLICT`
--   Example:
-
-Copy
-
-`INSERT_ONE { _id: 101, name: JohnDoe, age: 30 }`
+-   Example: `INSERT_ONE { _id: 101, name: JohnDoe, age: 30 }`
 
 ### INSERT_MANY
 
 -   Format: `INSERT_MANY [{ _id: <value>, ... }, { _id: <value>, ... }]`
 -   Returns: Comma-separated list of results
--   Example:
-
-Copy
-
-`INSERT_MANY [{ _id: 201, name: Alice }, { _id: 202, name: Bob }]`
+-   Example: `INSERT_MANY [{ _id: 201, name: Alice }, { _id: 202, name: Bob }]`
 
 ### FIND
 
 -   Format: `FIND { <key>: <value>, ... }`
 -   Returns: Comma-separated list of matching document IDs
--   Example:
-
-Copy
-
-`FIND { department: HR }`
+-   Example: `FIND { department: HR }`
 
 ### DELETE
 
 -   Format: `DELETE { <key>: <value>, ... }`
 -   Returns: Number of deleted documents
--   Example:
-
-Copy
-
-`DELETE { department: HR }`
+-   Example: `DELETE { department: HR }`
 
 ### STOP
 
@@ -241,20 +187,12 @@ Thread Safety
 Concurrency
 -----------
 
-java
-
-Copy
-
 `private final ExecutorService executorService;
 private final ReadWriteLock rwLock;
 private final ConcurrentMap<String,  Document> memoryStore;`
 
 Serialization
 -------------
-
-java
-
-Copy
 
 `public void serialize(Document document, String filePath) {
     try (ObjectOutputStream oos = new ObjectOutputStream(
@@ -270,10 +208,6 @@ Advanced Features
 
 The implementation uses daemon threads for background operations:
 
-java
-
-Copy
-
 `Thread thread = new Thread(r);
 thread.setDaemon(true);
 return thread;`
@@ -281,10 +215,6 @@ return thread;`
 ### Stream API Usage
 
 Efficient data processing using streams:
-
-java
-
-Copy
 
 `documents.parallelStream()
     .map(doc -> CompletableFuture.supplyAsync(() -> {
@@ -295,10 +225,6 @@ Copy
 ### Synchronization
 
 Proper resource management:
-
-java
-
-Copy
 
 `try {
     rwLock.writeLock().lock();
@@ -327,11 +253,6 @@ Contributing
 ### Testing
 
 Run the test suite:
-
-bash
-
-Copy
-
 `gradle test`
 
 License
