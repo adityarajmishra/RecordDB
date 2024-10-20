@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.recorddb.server.AppIntegrationBasicTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-10-20T13:15:40" hostname="RX297RV65C" time="0.05">
+  <properties/>
+  <testcase name="testCombinedCases()" classname="com.recorddb.server.AppIntegrationBasicTest" time="0.05"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
